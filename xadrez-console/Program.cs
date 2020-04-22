@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using tabuleiro;
 using xadrez_console.tabuleiro;
+using xadrez_console.xadrez;
 
 namespace xadrez_console
 {
@@ -16,6 +17,10 @@ namespace xadrez_console
             Console.WriteLine(p);
 
             Tabuleiro tab = new Tabuleiro(8, 8);
+            tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(1,1));
+            tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(3, 4));
+            tab.colocarPeca(new Rei(tab, Cor.Preta), new Posicao(7, 2));
+
 
             Tela.imprimirTabuleiro(tab);
             Console.WriteLine("");
