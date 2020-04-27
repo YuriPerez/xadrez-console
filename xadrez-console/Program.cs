@@ -16,14 +16,25 @@ namespace xadrez_console
             Posicao p = new Posicao(3, 2);
             Console.WriteLine(p);
 
-            Tabuleiro tab = new Tabuleiro(8, 8);
-            tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(1,1));
-            tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(3, 4));
-            tab.colocarPeca(new Rei(tab, Cor.Preta), new Posicao(7, 2));
+            try
+            {
+                Tabuleiro tab = new Tabuleiro(8, 8);
+                tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 1));
+                tab.colocarPeca(new Torre(tab, Cor.Branca), new Posicao(3, 4));
+                tab.colocarPeca(new Rei(tab, Cor.Preta), new Posicao(5, 1));
 
 
-            Tela.imprimirTabuleiro(tab);
-            Console.WriteLine("");
+                Tela.imprimirTabuleiro(tab);
+                Console.WriteLine("");
+
+                PosicaoXadrez pos = new PosicaoXadrez('c', 6);
+                Console.WriteLine(pos.ToString());
+                Console.WriteLine(pos.toPosicao());
+            }
+            catch (TabuleiroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

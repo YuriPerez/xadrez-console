@@ -32,6 +32,11 @@ namespace tabuleiro
         //METODO PARA COLOCAR PEÇAS NO TABULEIRO
         public void colocarPeca(Peca p, Posicao pos)
         {
+            if (existePeca(pos))
+            {
+                throw new TabuleiroException("A posição ja esta ocupada!");
+            }
+            validarPosicao(pos);
             pecas[pos.Linha, pos.Coluna] = p;
             p.posicao = pos;
         }
@@ -46,7 +51,7 @@ namespace tabuleiro
         //METODO PARA VALIDAR A POSICAO 
         public bool posicaoValida(Posicao pos)
         {
-            if (pos.Linha > 0 || pos.Linha <= linhas || pos.Coluna > 0 || pos.Coluna <= colunas)
+            if (pos.Linha >= 0 || pos.Linha <= linhas || pos.Coluna >= 0 || pos.Coluna <= colunas)
             {
                 return false;
             }
@@ -58,7 +63,7 @@ namespace tabuleiro
         //METODO PARA GERAR UME EXECAO CASO A POSICAO SEJA INVALIDA
         public void validarPosicao(Posicao pos)
         {
-            if (!posicaoValida(pos))
+            if (posicaoValida(pos))
             {
                 throw new TabuleiroException("Posição Invalida.");
             }
