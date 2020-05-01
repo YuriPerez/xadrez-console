@@ -63,7 +63,7 @@ namespace tabuleiro
         //METODO PARA VALIDAR A POSICAO 
         public bool posicaoValida(Posicao pos)
         {
-            if (pos.Linha >= 0 || pos.Linha <= linhas || pos.Coluna >= 0 || pos.Coluna <= colunas)
+            if (pos.Linha < 0 || pos.Linha >= linhas || pos.Coluna < 0 || pos.Coluna >= colunas)
             {
                 return false;
             }
@@ -75,7 +75,7 @@ namespace tabuleiro
         //METODO PARA GERAR UME EXECAO CASO A POSICAO SEJA INVALIDA
         public void validarPosicao(Posicao pos)
         {
-            if (posicaoValida(pos))
+            if (!posicaoValida(pos))
             {
                 throw new TabuleiroException("Posição Invalida.");
             }

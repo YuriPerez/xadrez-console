@@ -9,9 +9,6 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
-            Posicao p = new Posicao(3, 2);
-            Console.WriteLine(p);
-
             try
             {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
@@ -20,10 +17,15 @@ namespace xadrez_console
                 {
                     Console.Clear();
                     Tela.imprimirTabuleiro(partida.tab);
-
+                    Console.WriteLine("");
                     Console.Write("Origem: ");
                     Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
-                    Console.WriteLine("Destino: ");
+
+                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+                    Console.WriteLine("");
+                    Console.Write("Destino: ");
                     Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
                     partida.ExecutaMovimento(origem, destino);
