@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using tabuleiro;
 using xadrez_console.tabuleiro;
 using xadrez_console.xadrez;
@@ -18,23 +14,30 @@ namespace xadrez_console
 
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
-                tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 1));
-                tab.colocarPeca(new Torre(tab, Cor.Branca), new Posicao(3, 4));
-                tab.colocarPeca(new Rei(tab, Cor.Preta), new Posicao(5, 1));
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
+                while (!partida.terminada)
+                {
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab);
 
-                Tela.imprimirTabuleiro(tab);
-                Console.WriteLine("");
+                    Console.Write("Origem: ");
+                    Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+                    Console.WriteLine("Destino: ");
+                    Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
-                PosicaoXadrez pos = new PosicaoXadrez('c', 6);
-                Console.WriteLine(pos.ToString());
-                Console.WriteLine(pos.toPosicao());
+                    partida.ExecutaMovimento(origem, destino);
+                }
+
+                
             }
             catch (TabuleiroException e)
             {
                 Console.WriteLine(e.Message);
             }
+
+            Console.Write("Informe um posição de Origem: ");
+
         }
     }
 }
