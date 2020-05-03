@@ -1,7 +1,6 @@
 ﻿using System;
 using tabuleiro;
-using xadrez_console.tabuleiro;
-using xadrez_console.xadrez;
+
 
 namespace xadrez_console
 {
@@ -41,7 +40,8 @@ namespace xadrez_console
                         Console.ReadLine();
                     }
                 }
-
+                Console.Clear();
+                Tela.imprimirPartida(partida);
                 
             }
             catch (TabuleiroException e)

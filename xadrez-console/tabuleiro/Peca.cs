@@ -11,7 +11,7 @@ namespace tabuleiro
     {
         public Posicao posicao { get; set; }
         public Cor cor { get; protected set; }
-        public int qtdeMovimentos { get; protected set; }
+        public int qteMovimentos { get; protected set; }
         public Tabuleiro tab { get; set; }
 
         public Peca()
@@ -22,16 +22,16 @@ namespace tabuleiro
             this.posicao = null;
             this.cor = cor;
             this.tab = tab;
-            this.qtdeMovimentos = 0;
+            this.qteMovimentos = 0;
         }
 
-        public void incrementarQtdMovimentos()
+        public void incrementarQteMovimentos()
         {
-            qtdeMovimentos++;
+            qteMovimentos++;
         }
-        public void decrementarQtdMovimentos()
+        public void decrementarQteMovimentos()
         {
-            qtdeMovimentos--;
+            qteMovimentos--;
         }
 
         public bool existeMovimentosPossiveis()
@@ -50,9 +50,9 @@ namespace tabuleiro
             return false;
         }
 
-        public bool podeMoverPara(Posicao pos)
+        public bool movimentoPossivel(Posicao pos)
         {
-            return movimentosPossiveis()[pos.Linha, pos.Coluna];
+            return movimentosPossiveis()[pos.linha, pos.coluna];
         }
 
         public abstract bool[,] movimentosPossiveis();

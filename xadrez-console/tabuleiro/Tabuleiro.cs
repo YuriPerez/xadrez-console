@@ -1,4 +1,4 @@
-﻿using xadrez_console.tabuleiro;
+﻿using xadrez_console;
 
 namespace tabuleiro
 {
@@ -26,7 +26,7 @@ namespace tabuleiro
         //SOBRECARGA
         public Peca peca(Posicao pos)
         {
-            return pecas[pos.Linha, pos.Coluna];
+            return pecas[pos.linha, pos.coluna];
         }
 
         //METODO PARA COLOCAR PEÇAS NO TABULEIRO
@@ -37,7 +37,7 @@ namespace tabuleiro
                 throw new TabuleiroException("A posição ja esta ocupada!");
             }
             validarPosicao(pos);
-            pecas[pos.Linha, pos.Coluna] = p;
+            pecas[pos.linha, pos.coluna] = p;
             p.posicao = pos;
         }
 
@@ -49,7 +49,7 @@ namespace tabuleiro
             }
             Peca aux = peca(pos);
             aux.posicao = null;
-            pecas[pos.Linha, pos.Coluna] = null;
+            pecas[pos.linha, pos.coluna] = null;
             return aux;
         }
 
@@ -57,13 +57,13 @@ namespace tabuleiro
         public bool existePeca(Posicao pos)
         {
             validarPosicao(pos);
-            return (pecas[pos.Linha, pos.Coluna] != null);
+            return (pecas[pos.linha, pos.coluna] != null);
         }
 
         //METODO PARA VALIDAR A POSICAO 
         public bool posicaoValida(Posicao pos)
         {
-            if (pos.Linha < 0 || pos.Linha >= linhas || pos.Coluna < 0 || pos.Coluna >= colunas)
+            if (pos.linha < 0 || pos.linha >= linhas || pos.coluna < 0 || pos.coluna >= colunas)
             {
                 return false;
             }
